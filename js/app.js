@@ -12,18 +12,18 @@ var Enemy = function() {
     this.y = this.startPosY();
 	
     //each enemy will move at a speed chosen when it is created, but it will always move at the same speed once it is created.
-    this.speed = enemySpeeds[Math.round(Math.random()*5)]
-}
+    this.speed = enemySpeeds[Math.round(Math.random()*5)];
+};
 
 Enemy.prototype.startPosX = function() {
     //Start the enemy off screen (reason for a negative start position).   Use a number about as wide as the canvas so they appear at different times.
     return -(Math.round(Math.random()*1000));
-}
+};
 
 Enemy.prototype.startPosY = function() {
     //Pick a row to start the enemy in from the list of positions.
     return enemyStartRows[Math.round(Math.random()*3)];
-}
+};
 
 
 
@@ -45,12 +45,12 @@ Enemy.prototype.update = function(dt) {
         }
 	}
 
-}
+};
 
 Enemy.prototype.render = function() {
 	//This function draws the individual enemy on the screen.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 
 var Player = function() {
@@ -60,30 +60,31 @@ var Player = function() {
     this.playerY = [400];
     this.x = this.startPosX();
     this.y = this.startPosY();
-}
+};
 
 Player.prototype.startPosX = function () {
     return this.playerX[Math.round(Math.random()*5)];
-}
+};
 
 Player.prototype.startPosY = function() {
     return this.playerY[0];
-}
+};
 
 Player.prototype.update = function(dt) {
   //Player doesn't automatically move, so there is no code here.
   
-}
+};
 
 Player.prototype.reset = function() {
     this.x = this.startPosX();
     this.y = this.startPosY();
-}
+};
+
 Player.prototype.render = function() {
     //This function draws the player on the canvas.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
-}
+};
 
 Player.prototype.handleInput = function (num) {
     //the following if statements keep the player object on the board.
@@ -111,7 +112,7 @@ Player.prototype.handleInput = function (num) {
 	if(this.y < 0) {
 	resetPositions();
 	}
-}
+};
 
 
 // Now instantiate your objects.
@@ -152,4 +153,3 @@ function resetPositions() {
         allEnemies[j].y = allEnemies[j].startPosY();
     }
 }
-
