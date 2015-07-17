@@ -93,7 +93,7 @@ Player.prototype.handleInput = function (num) {
             this.x-=100;
             break;
         case 'up':
-            if(this.y > 85)
+            if(this.y > 0)
             this.y-=90;
             break;
         case 'right':
@@ -107,6 +107,9 @@ Player.prototype.handleInput = function (num) {
         default:
             return;
     }
+	if(this.y < 0) {
+	resetPositions();
+	}
 }
 
 
