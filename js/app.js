@@ -2,7 +2,7 @@
 var enemySpeeds = [60,95,150,260,330,450];
 var enemyStartRows = [64,147,230,313];
 
-// Enemies our player must avoid
+// The enemy object represents an object on the board that the player must avoid.
 var Enemy = function() {
 	//Define an image to use for the enemy.
     this.sprite = 'images/enemy-bug.png';
@@ -47,14 +47,14 @@ Enemy.prototype.update = function(dt) {
 
 }
 
-// Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
+	//This function draws the individual enemy on the screen.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
 
 var Player = function() {
-    //pick a character image
+    //load an image for the player, and pick a start position for the player.
     this.sprite = 'images/char-boy.png';
     this.playerX = [300,400,500,600,700,800];
     this.playerY = [400];
@@ -80,13 +80,13 @@ Player.prototype.reset = function() {
     this.y = this.startPosY();
 }
 Player.prototype.render = function() {
-    //Draw the player on the canvas.
+    //This function draws the player on the canvas.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
 }
 
 Player.prototype.handleInput = function (num) {
-    //if statements prevent our player from falling off the game board.
+    //the following if statements keep the player object on the board.
     switch(num) {
         case 'left':
             if(this.x > 15)
@@ -107,6 +107,7 @@ Player.prototype.handleInput = function (num) {
         default:
             return;
     }
+	// Check to see if the player fell in the water.   If so, reset the game.
 	if(this.y < 0) {
 	resetPositions();
 	}
