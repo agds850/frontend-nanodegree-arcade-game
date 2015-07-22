@@ -115,7 +115,7 @@ Player.prototype.handleInput = function (num) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies=[];
-for (i=0; i<9; i++) {
+for (var i = 0; i < 9; i++) {
 	allEnemies.push(new Enemy());
 }
 var player = new Player();
@@ -135,8 +135,9 @@ document.addEventListener('keyup', function(e) {
 
 function resetPositions() {
 	player.reset();
-	for(var j in allEnemies) {
-		allEnemies[j].x = allEnemies[j].startPosX();
-		allEnemies[j].y = allEnemies[j].startPosY();
-	}
+
+	allEnemies.forEach(function(val) {
+		val.x = val.startPosX();
+		val.y = val.startPosY();
+	});
 }
